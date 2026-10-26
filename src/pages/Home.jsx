@@ -50,7 +50,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-ivory text-charcoal-900">
+    <div className="min-h-screen flex flex-col bg-ivory text-charcoal-900 overflow-x-hidden w-full max-w-full">
       
       {/* Refined Institutional Header */}
       <Header
@@ -58,7 +58,7 @@ export default function Home() {
         onOpenAdmissionsModal={() => setAdmissionsModalOpen(true)}
       />
 
-      <main className="flex-grow">
+      <main className="flex-grow w-full overflow-x-hidden">
         {/* 1. Hero Section with ParticleText & Warm Natural Sunlight */}
         <Hero
           onOpenCSRModal={() => setCsrModalOpen(true)}

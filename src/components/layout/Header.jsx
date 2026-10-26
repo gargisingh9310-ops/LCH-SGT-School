@@ -40,24 +40,24 @@ export default function Header({ onOpenCSRModal, onOpenAdmissionsModal }) {
         <div className="flex items-center justify-between">
           
           {/* Left: School Logo & 40 Years Tag */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <img
               src="/assets/logos/school_logo_transparent.png"
               alt="LCH SGT High School Logo"
               className={`transition-all duration-300 object-contain ${
-                isScrolled ? 'h-11 sm:h-12' : 'h-13 sm:h-14 drop-shadow-md'
+                isScrolled ? 'h-9 sm:h-11 md:h-12' : 'h-10 sm:h-13 md:h-14 drop-shadow-md'
               }`}
             />
             <div className="flex flex-col">
               <span
-                className={`font-display font-extrabold text-base sm:text-lg tracking-tight leading-none transition-colors ${
+                className={`font-display font-extrabold text-xs xs:text-sm sm:text-base md:text-lg tracking-tight leading-none transition-colors ${
                   isScrolled ? 'text-emerald-950' : 'text-white'
                 }`}
               >
                 LCH SGT HIGH SCHOOL
               </span>
               <span
-                className={`text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase mt-1 transition-colors ${
+                className={`text-[8.5px] xs:text-[10px] md:text-[11px] font-semibold tracking-wider uppercase mt-0.5 sm:mt-1 transition-colors truncate max-w-[170px] xs:max-w-none ${
                   isScrolled ? 'text-amber-600' : 'text-amber-300'
                 }`}
               >

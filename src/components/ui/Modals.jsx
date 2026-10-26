@@ -21,7 +21,7 @@ export function CSRModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div 
+      <div
         className="relative w-full max-w-xl rounded-2xl bg-white border border-emerald-900/10 shadow-premium p-6 sm:p-8 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
@@ -169,7 +169,7 @@ export function FacilityModal({ facility, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div 
+      <div
         className="relative w-full max-w-2xl rounded-2xl bg-white border border-emerald-900/10 shadow-premium overflow-hidden max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
@@ -225,7 +225,7 @@ export function AdmissionsModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div 
+      <div
         className="relative w-full max-w-lg rounded-2xl bg-white border border-emerald-900/10 shadow-premium p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >

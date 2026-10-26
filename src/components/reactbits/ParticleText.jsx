@@ -57,11 +57,12 @@ export default function ParticleText({
       mouseY = -1000;
     };
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       if (!canvas.parentElement) return;
       width = canvas.width = canvas.parentElement.clientWidth;
       height = canvas.height = canvas.parentElement.clientHeight;
-    });
+    };
+    window.addEventListener('resize', handleResize);
 
     const parent = canvas.parentElement;
     parent.addEventListener('mousemove', handleMouseMove);
@@ -124,20 +125,21 @@ export default function ParticleText({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', handleResize);
       parent.removeEventListener('mousemove', handleMouseMove);
       parent.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
   return (
-    <div ref={containerRef} className={`relative inline-block ${className}`}>
+    <div ref={containerRef} className={`relative inline-block w-full max-w-full ${className}`}>
       {/* Particle Canvas Layer */}
       <canvas
         ref={canvasRef}
-        className="absolute -inset-8 w-[calc(100%+4rem)] h-[calc(100%+4rem)] pointer-events-none z-0"
+        className="absolute inset-0 sm:-inset-8 w-full sm:w-[calc(100%+4rem)] h-full sm:h-[calc(100%+4rem)] pointer-events-none z-0 overflow-hidden"
       />
       {/* Main Crisp Readable Heading */}
-      <h1 className="relative z-10 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.12] font-display text-shadow-md">
+      <h1 className="relative z-10 text-[22px] xs:text-[26px] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15] sm:leading-[1.12] font-display text-shadow-md break-words">
         Where <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">Learning</span> Goes Beyond the{' '}
         <span className="relative inline-block">
           <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-emerald-100 to-white">

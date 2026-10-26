@@ -9,6 +9,10 @@ export default function FlexCarousel({
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 45;
 
   useEffect(() => {
     if (!autoPlay || isPaused || items.length === 0) return;
@@ -26,6 +30,27 @@ export default function FlexCarousel({
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
   };
 
   if (!items || items.length === 0) return null;
@@ -123,49 +148,67 @@ export default function FlexCarousel({
         })}
       </div>
 
-      {/* Mobile Card View (Swipable single/dual card with touch friendly controls) */}
-      <div className="md:hidden">
-        <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-elevated">
+      {/* Mobile Card View with touch-swipe & responsive aspect */}
+      <div 
+        className="md:hidden select-none"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <div className="relative rounded-2xl overflow-hidden aspect-[4/5.2] min-h-[370px] xs:min-h-[390px] shadow-elevated">
           <img
             src={items[activeIndex].image}
             alt={items[activeIndex].title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/65 to-transparent" />
           
-          <div className="absolute inset-0 p-6 flex flex-col justify-between">
+          <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 backdrop-blur-md text-amber-300 border border-amber-400/30 text-[11px] font-semibold">
-                <Sparkles className="w-3 h-3 text-amber-400" />
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 backdrop-blur-md text-amber-300 border border-amber-400/30 text-[10px] sm:text-[11px] font-semibold">
+                <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
                 {items[activeIndex].tag || "Holistic Learning"}
               </span>
-              <span className="text-white/70 font-mono text-xs">
+              <span className="text-white/80 font-mono text-[11px] sm:text-xs bg-black/30 px-2 py-0.5 rounded-full backdrop-blur-sm">
                 0{activeIndex + 1} / 0{items.length}
               </span>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-2xl font-bold text-white font-display">
+            <div className="space-y-1.5 sm:space-y-2">
+              <div className="flex items-center gap-1.5 text-amber-400 text-[10px] sm:text-[11px] font-medium uppercase tracking-wider">
+                <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                <span>Key Growth Focus</span>
+              </div>
+              <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-white font-display leading-tight">
                 {items[activeIndex].title}
               </h3>
-              <p className="text-xs text-sage-100/90 leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-sage-100/90 leading-relaxed font-sans line-clamp-3">
                 {items[activeIndex].description}
               </p>
+              {items[activeIndex].highlights && (
+                <div className="flex flex-wrap gap-1.5 pt-1.5">
+                  {items[activeIndex].highlights.map((h, i) => (
+                    <span key={i} className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-white/90 border border-white/10">
+                      {h}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
       {/* Navigation Controls and Indicators */}
-      <div className="flex items-center justify-between mt-6 px-1">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between mt-5 sm:mt-6 px-1">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {items.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 idx === activeIndex
-                  ? 'w-8 bg-amber-500'
+                  ? 'w-6 sm:w-8 bg-amber-500'
                   : 'w-2 bg-emerald-900/20 hover:bg-emerald-900/40'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
@@ -176,17 +219,17 @@ export default function FlexCarousel({
         <div className="flex items-center gap-2">
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full bg-white hover:bg-sage-100 text-emerald-900 border border-emerald-900/10 flex items-center justify-center transition-colors shadow-sm"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white hover:bg-sage-100 text-emerald-900 border border-emerald-900/10 flex items-center justify-center transition-colors shadow-sm active:scale-95"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full bg-emerald-900 hover:bg-emerald-800 text-white flex items-center justify-center transition-colors shadow-sm"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-emerald-900 hover:bg-emerald-800 text-white flex items-center justify-center transition-colors shadow-sm active:scale-95"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-5 h-5 text-amber-400" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
           </button>
         </div>
       </div>

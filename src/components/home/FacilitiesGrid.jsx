@@ -94,7 +94,7 @@ export default function FacilitiesGrid({ onFacilityClick }) {
   };
 
   return (
-    <section id="facilities" className="py-24 bg-ivory-50 relative overflow-hidden border-t border-b border-emerald-900/10">
+    <section id="facilities" className="py-14 sm:py-20 md:py-24 bg-ivory-50 relative overflow-hidden border-t border-b border-emerald-900/10">
       
       {/* Background Subtle Accent Gradients */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-emerald-700/5 rounded-full blur-3xl pointer-events-none" />
@@ -103,18 +103,18 @@ export default function FacilitiesGrid({ onFacilityClick }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 gap-4 sm:gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-3">
-              <Compass className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3">
+              <Compass className="w-3.5 h-3.5 text-amber-600 shrink-0" />
               <span>10 Interactive Campus Facilities</span>
             </div>
             
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-emerald-950 font-display tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-emerald-950 font-display tracking-tight leading-tight">
               A Campus That Inspires Learning
             </h2>
             
-            <p className="mt-3 text-base text-charcoal-700 font-sans leading-relaxed">
+            <p className="mt-2.5 sm:mt-3 text-sm sm:text-base text-charcoal-700 font-sans leading-relaxed">
               Explore the spaces and experiences that support learning, creativity, wellbeing, and growth.
             </p>
           </div>
@@ -127,7 +127,7 @@ export default function FacilitiesGrid({ onFacilityClick }) {
         </div>
 
         {/* Editorial Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {facilities.map((fac, idx) => {
             const isLead = fac.isLead;
             return (
@@ -136,7 +136,7 @@ export default function FacilitiesGrid({ onFacilityClick }) {
                 href={fac.link}
                 onClick={(e) => handleClick(e, fac)}
                 className={`group relative rounded-2xl overflow-hidden bg-emerald-950 border border-emerald-900/20 shadow-elevated transition-all duration-500 hover:shadow-premium hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
-                  isLead ? 'sm:col-span-2 lg:col-span-2 aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[4/3] sm:aspect-[4/3.2]'
+                  isLead ? 'sm:col-span-2 lg:col-span-2 min-h-[280px] sm:min-h-0 aspect-[16/12] sm:aspect-[16/9]' : 'min-h-[250px] sm:min-h-0 aspect-[4/3.4] sm:aspect-[4/3.2]'
                 }`}
               >
                 {/* Image with Zoom Transition */}
@@ -151,28 +151,28 @@ export default function FacilitiesGrid({ onFacilityClick }) {
                 <div className="absolute inset-0 bg-emerald-900/20 group-hover:bg-emerald-900/40 transition-colors duration-300" />
 
                 {/* Card Content */}
-                <div className="absolute inset-0 p-6 sm:p-7 flex flex-col justify-between z-10">
+                <div className="absolute inset-0 p-4 sm:p-6 lg:p-7 flex flex-col justify-between z-10">
                   
                   {/* Top Bar: Category Tag & Arrow Icon */}
                   <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-amber-300 text-xs font-semibold tracking-wide border border-white/20 shadow-sm">
-                      <Sparkles className="w-3 h-3 text-amber-400" />
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-amber-300 text-[11px] sm:text-xs font-semibold tracking-wide border border-white/20 shadow-sm">
+                      <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
                       {fac.category}
                     </span>
 
-                    <div className="w-9 h-9 rounded-full bg-white/10 group-hover:bg-amber-500 text-white group-hover:text-charcoal-950 flex items-center justify-center backdrop-blur-md border border-white/20 transition-all duration-300 transform group-hover:rotate-45">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 group-hover:bg-amber-500 text-white group-hover:text-charcoal-950 flex items-center justify-center backdrop-blur-md border border-white/20 transition-all duration-300 transform group-hover:rotate-45 shrink-0">
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
 
                   {/* Bottom Text Content */}
-                  <div className="space-y-1.5">
-                    <div className="text-[11px] font-mono text-amber-400/90 tracking-widest uppercase">
+                  <div className="space-y-1 sm:space-y-1.5">
+                    <div className="text-[10px] sm:text-[11px] font-mono text-amber-400/90 tracking-widest uppercase">
                       Facility 0{idx + 1}
                     </div>
 
                     <h3 className={`font-bold text-white font-display tracking-tight group-hover:text-amber-300 transition-colors ${
-                      isLead ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'
+                      isLead ? 'text-lg sm:text-2xl md:text-3xl' : 'text-base sm:text-xl md:text-2xl'
                     }`}>
                       {fac.title}
                     </h3>
@@ -183,7 +183,7 @@ export default function FacilitiesGrid({ onFacilityClick }) {
                       {fac.description}
                     </p>
 
-                    <div className="pt-2 flex items-center gap-1.5 text-xs font-semibold text-amber-400 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-1 sm:group-hover:translate-y-0 transition-all duration-300">
+                    <div className="pt-1.5 sm:pt-2 flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-amber-400 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-1 sm:group-hover:translate-y-0 transition-all duration-300">
                       <span>View facility preview</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </div>
@@ -196,7 +196,7 @@ export default function FacilitiesGrid({ onFacilityClick }) {
         </div>
 
         {/* Bottom Note */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 sm:mt-12 text-center">
           <p className="text-xs text-charcoal-600 font-sans italic">
             * All 10 campus facilities are linked to individual preview data objects for phase 2 expansion.
           </p>

@@ -44,7 +44,7 @@ export default function ProfileCard({
 
   return (
     <div 
-      className="perspective-1000 w-full max-w-md mx-auto"
+      className="perspective-1000 w-full max-w-sm sm:max-w-md mx-auto"
       style={{ perspective: '1200px' }}
     >
       <div
@@ -55,7 +55,7 @@ export default function ProfileCard({
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
           transition: 'transform 0.15s ease-out',
         }}
-        className="relative rounded-2xl bg-gradient-to-br from-white via-ivory-50 to-sage-50 border border-emerald-900/10 shadow-elevated p-8 overflow-hidden group hover:shadow-premium"
+        className="relative rounded-2xl bg-gradient-to-br from-white via-ivory-50 to-sage-50 border border-emerald-900/10 shadow-elevated p-4 sm:p-8 overflow-hidden group hover:shadow-premium"
       >
         {/* Subtle holographic sheen edge */}
         <div
@@ -67,27 +67,27 @@ export default function ProfileCard({
         />
 
         {/* Top badge */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold tracking-wide border border-emerald-200/60">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[10px] sm:text-xs font-semibold tracking-wide border border-emerald-200/60">
             <Award className="w-3.5 h-3.5 text-amber-500" />
             <span>School Leadership</span>
           </div>
-          <span className="text-[11px] font-mono tracking-wider text-charcoal-600/70 uppercase">
+          <span className="text-[10px] sm:text-[11px] font-mono tracking-wider text-charcoal-600/70 uppercase">
             Est. 40 Years
           </span>
         </div>
 
         {/* Portrait container */}
-        <div className="relative mx-auto w-44 h-44 rounded-2xl p-1 bg-gradient-to-tr from-emerald-800 via-amber-400 to-emerald-600 shadow-md mb-6">
+        <div className="relative mx-auto w-32 h-32 sm:w-44 sm:h-44 rounded-2xl p-1 bg-gradient-to-tr from-emerald-800 via-amber-400 to-emerald-600 shadow-md mb-4 sm:mb-6">
           <div className="w-full h-full rounded-[14px] bg-sage-100 flex flex-col items-center justify-center overflow-hidden border border-white">
             {image ? (
               <img src={image} alt="Principal Portrait" className="w-full h-full object-cover" />
             ) : (
-              <div className="text-center p-4">
-                <div className="w-16 h-16 mx-auto rounded-full bg-emerald-900/10 flex items-center justify-center text-emerald-800 mb-2">
-                  <UserCheck className="w-8 h-8 text-emerald-700" />
+              <div className="text-center p-3 sm:p-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto rounded-full bg-emerald-900/10 flex items-center justify-center text-emerald-800 mb-1.5 sm:mb-2">
+                  <UserCheck className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-700" />
                 </div>
-                <p className="text-[11px] font-semibold text-emerald-900">
+                <p className="text-[11px] font-semibold text-emerald-950">
                   Principal's Portrait
                 </p>
                 <p className="text-[10px] text-charcoal-600/80 mt-0.5">
@@ -100,10 +100,10 @@ export default function ProfileCard({
 
         {/* Name and Title */}
         <div className="text-center space-y-1">
-          <h3 className="text-xl font-bold text-emerald-950 font-display tracking-tight">
+          <h3 className="text-base sm:text-xl font-bold text-emerald-950 font-display tracking-tight break-words">
             {name}
           </h3>
-          <p className="text-sm font-medium text-amber-700">
+          <p className="text-xs sm:text-sm font-medium text-amber-700">
             {title}
           </p>
         </div>

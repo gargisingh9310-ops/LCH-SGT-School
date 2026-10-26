@@ -55,7 +55,7 @@ export default function ActivitiesCarousel() {
   ];
 
   return (
-    <section id="activities" className="py-24 bg-white relative overflow-hidden">
+    <section id="activities" className="py-14 sm:py-20 md:py-24 bg-white relative overflow-hidden">
       
       {/* Background Accent Lines */}
       <div className="absolute top-0 right-1/3 w-96 h-96 bg-sage-100/60 rounded-full blur-3xl pointer-events-none" />
@@ -63,20 +63,20 @@ export default function ActivitiesCarousel() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-bold uppercase tracking-wider mb-4">
-            <Activity className="w-4 h-4 text-amber-600" />
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4">
+            <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-600 shrink-0" />
             <span>Campus Life & Student Development</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-emerald-950 font-display tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-emerald-950 font-display tracking-tight leading-tight">
             Learning Comes Alive{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 to-emerald-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 to-emerald-600 block sm:inline">
               Beyond the Classroom
             </span>
           </h2>
 
-          <p className="mt-4 text-base text-charcoal-700/90 leading-relaxed font-sans">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-charcoal-700/90 leading-relaxed font-sans">
             Through engaging activities, children develop mindfulness, discipline, physical fitness, teamwork, and confidence.
           </p>
         </div>
@@ -87,20 +87,20 @@ export default function ActivitiesCarousel() {
         </div>
 
         {/* Core Value Tags Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-100 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-semibold text-emerald-950">
-          <span className="px-3.5 py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs md:text-sm font-semibold text-emerald-950">
+          <span className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
             🌱 Mindfulness & Discipline
           </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
+          <span className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
             🏃 Physical Fitness
           </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
+          <span className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
             🤝 Teamwork & Cooperation
           </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
+          <span className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
             🎤 Confidence & Communication
           </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
+          <span className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-sage-50 border border-emerald-900/10">
             ✨ Holistic Development
           </span>
         </div>
